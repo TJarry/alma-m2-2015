@@ -10,7 +10,7 @@
       </moduleElements>
       <moduleElements xsi:type="angular:ESClass" name="Users"/>
       <moduleElements xsi:type="angular:ESClass" name="User"/>
-      <moduleElements xsi:type="angular:ESClass" name="UpdateUser"/>
+      <moduleElements xsi:type="angular:ESClass" name="UpdateUser" extends="//@folders.0/@modules.0/@moduleElements.2"/>
     </modules>
     <modules/>
   </folders>
