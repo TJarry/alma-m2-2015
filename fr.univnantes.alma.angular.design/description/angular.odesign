@@ -13,15 +13,15 @@
           </style>
         </edgeMappings>
         <containerMappings name="CD_Class" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ESClass']" labelDirectEdit="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Classifier%20Direct%20Edit']" domainClass="angular.ESClass" childrenPresentation="List">
-          <subNodeMappings name="CD_Field" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Field']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Field">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+' : '+self.type" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="CD_Field" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Field']" labelDirectEdit="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Field']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Field">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+': '+self.type" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="CD_Function" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Function']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Function">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+'('+self.parameters->collect(p | p.name + ': '+ p.type)->sep(', ')+')'+': '+self.type " labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="CD_Function" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Function']" labelDirectEdit="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Function']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Function">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+'('+self.parameters->collect(p | p.name +': '+p.type)->sep(', ')+')'+':'+self.type" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -58,8 +58,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Field" referenceName="fields">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="NewType"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newField"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -71,11 +71,11 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Function" referenceName="functions">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Parameter" referenceName="parameters">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewParameter"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="NewType"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewName"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewFunction"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="New Type"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newFunction"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -85,31 +85,51 @@
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="extends" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="ESClass">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Field">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Function">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Extends">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
-            <initialOperation/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="extends"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Behavior Tools">
@@ -117,6 +137,18 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:toCamelCase(arg0)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Field">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Function">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
