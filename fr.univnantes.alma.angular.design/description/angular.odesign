@@ -59,6 +59,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Field" referenceName="fields">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newField"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="type"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -69,7 +70,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Function" referenceName="functions">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newFunction"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Parameter" referenceName="parameters">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="String"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.type+':'+'NewParameters'"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.type+'NewFunction'+container.functions->filter(angular::Function)->size()+'('+self.parameters.name+')'"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="type"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
