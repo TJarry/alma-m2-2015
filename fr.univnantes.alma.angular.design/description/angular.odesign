@@ -14,14 +14,14 @@
         </edgeMappings>
         <containerMappings name="CD_Class" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ESClass']" labelDirectEdit="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Classifier%20Direct%20Edit']" domainClass="angular.ESClass" childrenPresentation="List">
           <subNodeMappings name="CD_Field" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Field']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Field">
-            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+' : '+self.type" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="CD_Function" deletionDescription="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Function']" semanticCandidatesExpression="feature:eAllContents" domainClass="angular.Function">
-            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name+'('+self.parameters->collect(p | p.name + ': '+ p.type)->sep(', ')+')'+': '+self.type " labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -59,7 +59,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Field" referenceName="fields">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newField"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="type"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -71,11 +71,11 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Function" referenceName="functions">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="angular.Parameter" referenceName="parameters">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="String"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.type+':'+'NewParameters'"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewParameter"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.type+'NewFunction'+container.functions->filter(angular::Function)->size()+'('+self.parameters.name+')'"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="type"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewFunction"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="newType"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
