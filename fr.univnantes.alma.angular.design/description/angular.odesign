@@ -126,7 +126,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.target">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="extends"/>
               </firstModelOperations>
             </initialOperation>
