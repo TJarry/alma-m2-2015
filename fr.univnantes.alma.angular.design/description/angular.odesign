@@ -255,7 +255,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram" domainClass="angular.Folder" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="Dependencies" sourceMapping="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subNodeMappings[name='Controller'] //@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subContainerMappings[name='Directives']/@subNodeMappings[name='ControllerDirective'] //@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subContainerMappings[name='Directives']" targetMapping="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subNodeMappings[name='Service']" targetFinderExpression="feature:dependencies">
+        <edgeMappings name="Dependencies" sourceMapping="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subNodeMappings[name='Controllers'] //@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subContainerMappings[name='Directives']/@subNodeMappings[name='DirController'] //@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subContainerMappings[name='Directives']" targetMapping="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subNodeMappings[name='Services']" targetFinderExpression="feature:dependencies">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription>
@@ -263,15 +263,15 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Modules" domainClass="angular.Module">
-          <subNodeMappings name="Service" semanticCandidatesExpression="feature:moduleElements" domainClass="angular.NgService">
+        <containerMappings name="Module" semanticCandidatesExpression="feature:modules" domainClass="angular.Module">
+          <subNodeMappings name="Services" semanticCandidatesExpression="feature:moduleElements" domainClass="angular.NgService">
             <style xsi:type="style:EllipseNodeDescription" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Controller" semanticCandidatesExpression="feature:moduleElements" domainClass="angular.NgController">
+          <subNodeMappings name="Controllers" semanticCandidatesExpression="feature:moduleElements" domainClass="angular.NgController">
             <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -279,7 +279,7 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="Directives" semanticCandidatesExpression="feature:moduleElements" domainClass="angular.NgDirective">
-            <subNodeMappings name="ControllerDirective" semanticCandidatesExpression="feature:controller" domainClass="angular.NgController">
+            <subNodeMappings name="DirController" semanticCandidatesExpression="feature:controller" domainClass="angular.NgController">
               <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -301,7 +301,7 @@
           </style>
         </containerMappings>
         <toolSections name="Sirius">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Module" containerMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Module" containerMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -310,7 +310,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Service" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subNodeMappings[name='Service']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Service" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subNodeMappings[name='Services']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -321,7 +321,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Controller" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subNodeMappings[name='Controller']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Controller" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subNodeMappings[name='Controllers']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -332,7 +332,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Directive" containerMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subContainerMappings[name='Directives']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Directive" containerMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subContainerMappings[name='Directives']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -343,7 +343,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="New ControllerDirective" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Modules']/@subContainerMappings[name='Directives']/@subNodeMappings[name='ControllerDirective']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="DirController" nodeMappings="//@ownedViewpoints[name='Architecture']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='Module']/@subContainerMappings[name='Directives']/@subNodeMappings[name='DirController']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -373,11 +373,11 @@
   <ownedViewpoints name="Review" modelFileExtension="xmi">
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="ESClass review" domainClass="angular.Module">
       <ownedLineMappings name="ESClassLine" domainClass="angular.ESClass" semanticCandidatesExpression="feature:moduleElements"/>
-      <ownedColumnMappings name="ClassName" featureName="name"/>
-      <ownedColumnMappings name="ClassFields" featureName="fields"/>
-      <ownedColumnMappings name="ClassFunctions" featureName="functions"/>
-      <ownedColumnMappings name="ClassAbstract" featureName="abstract"/>
-      <ownedColumnMappings name="ClassExtends" featureName="extends"/>
+      <ownedColumnMappings name="ClassName" headerLabelExpression="Class name" featureName="name"/>
+      <ownedColumnMappings name="ClassFields" headerLabelExpression="Class fields" featureName="fields"/>
+      <ownedColumnMappings name="ClassFunctions" headerLabelExpression="Class functions" featureName="functions"/>
+      <ownedColumnMappings name="ClassAbstract" headerLabelExpression="Class abstract" featureName="abstract"/>
+      <ownedColumnMappings name="ClassExtends" headerLabelExpression="Class extends" featureName="extends"/>
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Default Colors">
