@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <angular:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:angular="http://www.univnantes.fr/alma/angular" xsi:schemaLocation="http://www.univnantes.fr/alma/angular ../fr.univnantes.alma.angular/model/angular.ecore" name="NewPage">
   <folders name="Michel">
-    <modules name="name">
-      <moduleElements xsi:type="angular:ESClass" name="NewClass1">
+    <modules name="Ja"/>
+    <modules name="Zaz">
+      <moduleElements xsi:type="angular:NgService" name="New Service"/>
+      <moduleElements xsi:type="angular:NgController" name="New Controller" dependencies="//@folders.0/@modules.1/@moduleElements.0"/>
+      <moduleElements xsi:type="angular:NgController" name="New Controller" dependencies="//@folders.0/@modules.1/@moduleElements.0"/>
+      <moduleElements xsi:type="angular:NgDirective" name="New Directive" dependencies="//@folders.0/@modules.1/@moduleElements.0"/>
+      <moduleElements xsi:type="angular:ESClass" name="Michel" extends="//@folders.0/@modules.1/@moduleElements.6">
         <fields name="newField" type="NewType"/>
+      </moduleElements>
+      <moduleElements xsi:type="angular:ESClass" name="Boulot" extends="//@folders.0/@modules.1/@moduleElements.6"/>
+      <moduleElements xsi:type="angular:ESClass" name="Maison">
         <functions name="newFunction" type="New Type">
           <parameters name="NewName" type="NewType"/>
         </functions>
       </moduleElements>
     </modules>
-    <pages name="NewPage"/>
   </folders>
 </angular:Project>
